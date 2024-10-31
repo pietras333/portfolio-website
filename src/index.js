@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import AboutMe from "./Pages/AboutMe";
 import Navbar from "./Pages/Navbar";
 import Resume from "./Pages/Resume";
+import Projects from "./Pages/Projects";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,5 +14,6 @@ root.render(
     <Home />
     <AboutMe />
     <Resume />
+    {/* <Projects /> */}
   </React.StrictMode>
 );

@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -22,20 +24,33 @@ const Navbar = () => {
       }
     };
 
+    const resumeSection = document.getElementById("resume");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsNavbarVisible(!entry.isIntersecting); // Hide navbar when Resume is in view
+        });
+      },
+      { threshold: 0.5 } // Adjust threshold as needed (0.5 = 50% visibility)
+    );
+
+    if (resumeSection) observer.observe(resumeSection);
+
     // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
     // Cleanup the event listener when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (resumeSection) observer.unobserve(resumeSection);
     };
   }, []);
 
   return (
     <nav
       className={`w-full  z-10 sticky top-0 h-52 max-md:h-32 flex justify-around max-md:justify-between max-md:items-center text-3xl max-lg:text-2xl ${
-        isScrolled ? "opacity-70 h-28" : "opacity-100 h-52 max-md:h-32 "
-      } bg-[#ebebeb] `}
+        isScrolled ? "opacity-70 h-32" : "opacity-100 h-52 max-md:h-32 "
+      } bg-[#ebebeb] ${isNavbarVisible ? "opacity-100" : "opacity-0"}`}
     >
       <ul className="w-1/8 max-md:w-fit  h-full flex justify-start items-center ">
         <img
