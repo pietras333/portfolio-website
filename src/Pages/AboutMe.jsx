@@ -1,6 +1,6 @@
 import arrow from "../Assets/arrow.png";
 import charUpStairs from "../Assets/charUpStairs.png";
-
+import { motion } from "framer-motion";
 const AboutMe = () => {
   const ScrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -20,11 +20,24 @@ const AboutMe = () => {
             alt="character moving up stairs"
             className="hidden max-md:w-[200px] max-md:block max-md:opacity-75"
           />
-          <caption className="max-lg:text-base text-2xl mt-44 max-md:w-3/4 max-md:m-0 opacity-50 max-lg:w-3/4 w-[800px] h-[60px] text-start bg-[#ebebeb] max-md:text-xs max-xl:text-lg">
+          <caption className="relative max-lg:text-base text-2xl mt-44 max-md:w-3/4 max-md:m-0 opacity-50 max-lg:w-3/4 w-[800px] h-[60px] text-start bg-[#ebebeb] max-md:text-xs max-xl:text-lg">
             Mastering new languages, exploring technologies, or building
             projects -I make every second count
+            <motion.section
+              initial={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 0, x: -200 }}
+              transition={{ duration: 0.2, delay: 0.5 }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="absolute w-full h-full bg-[#00A8FF] top-0 bottom-0 right-0 left-0"
+            ></motion.section>
           </caption>
-          <p className="text-xl max-xl:text-right max-lg:text-left mt-8 max-md:mt-0 opacity-100 w-[600px] h-[60px] max-md:text-sm max-md:h-fit max-xl:text-lg max-md:w-4/5">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-xl max-xl:text-right max-lg:text-left mt-8 max-md:mt-0 opacity-100 w-[600px] h-[60px] max-md:text-sm max-md:h-fit max-xl:text-lg max-md:w-4/5"
+          >
             I'm Piotr Wendt, an 18-year-old developer from Poland with a
             lifelong passion for computers. I began my journey at age 12,
             starting with <span className="text-[#00A8FF]">Scratch</span> and
@@ -53,7 +66,7 @@ const AboutMe = () => {
             and passing exams in hardware, software,
             <span className="text-[#FF006F]"> programming</span>, and database
             design.
-          </p>
+          </motion.p>
         </section>
         <section className="home-right max-xl:items-center max-xl:w-full max-xl:flex-row max-xl:h-1/6 w-1/2  max-xl:justify-center h-full flex flex-col justify-start items-end relative">
           <h2 className="text-5xl mt-52 max-md:mt-10 mr-52 max-xl:mt-52 max-xl:mr-0 max-md:text-5xl max-xl:text-6xl max-lg:text-5xl max-md:leading-loose max-md:bg-transparent leading-snug font-semibold bg-[#ebebeb]">
@@ -61,7 +74,11 @@ const AboutMe = () => {
               About Me
             </span>
           </h2>
-          <img
+          <motion.img
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2, delay: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
             src={charUpStairs}
             alt="character moving up stairs"
             className="w-[600px] max-xl:hidden max-xl:w-[400px] mr-52 mt-[-5rem]"
