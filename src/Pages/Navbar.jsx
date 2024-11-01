@@ -25,6 +25,7 @@ const Navbar = () => {
     };
 
     const resumeSection = document.getElementById("resume");
+    const portfolioSection = document.getElementById("portfolio");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,6 +36,7 @@ const Navbar = () => {
     );
 
     if (resumeSection) observer.observe(resumeSection);
+    if (portfolioSection) observer.observe(portfolioSection);
 
     // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
@@ -43,13 +45,14 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (resumeSection) observer.unobserve(resumeSection);
+      if (portfolioSection) observer.unobserve(portfolioSection);
     };
   }, []);
 
   return (
     <nav
-      className={`w-full  z-10 sticky top-0 h-52 max-md:h-32 flex justify-around max-md:justify-between max-md:items-center text-3xl max-lg:text-2xl ${
-        isScrolled ? "opacity-70 h-32" : "opacity-100 h-52 max-md:h-32 "
+      className={`w-full z-10 sticky top-0 max-md:h-32 flex justify-around max-md:justify-between max-md:items-center text-3xl max-lg:text-2xl ${
+        isScrolled ? "h-32" : "h-52 max-md:h-32"
       } bg-[#ebebeb] ${isNavbarVisible ? "opacity-100" : "opacity-0"}`}
     >
       <ul className="w-1/8 max-md:w-fit  h-full flex justify-start items-center ">
