@@ -1,5 +1,6 @@
 import charSitting from "../Assets/char-sitting.png";
 import arrow from "../Assets/arrow.png";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const ScrollToSection = (id) => {
@@ -13,7 +14,13 @@ const Home = () => {
       <section className="w-full h-full flex flex-col bg-dotGrid bg-cover">
         <section className="w-full h-full flex max-md:flex-col">
           <section className="home-left h-full w-1/2 max-md:h-1/2 flex flex-col justify-start items-center max-xl:w-full max-md:items-start ">
-            <section className="max-xl:ml-10">
+            <motion.section
+              initial={{ opacity: 0, x: -200 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="max-xl:ml-10"
+            >
               <caption className="w-full mt-10 flex text-3xl max-lg:text-xl max-md:text-lg font-light bg-[#ebebeb]">
                 Wendt Piotr
               </caption>
@@ -28,10 +35,15 @@ const Home = () => {
                 Mastering new languages, exploring technologies, or building
                 projects -I make every second count
               </p>
-              <button className="mt-8 max-md:mt-0 w-[260px] max-md:w-[200px] h-[60px] max-xl:w-[220px] bg-[#00A8FF] text-2xl max-md:text-lg max-xl:text-lg text-white font-light opacity-80 max-md:opacity-80 hover:opacity-100">
+              <motion.button
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.2, bounce: 0.5 }}
+                className="mt-8 max-md:mt-0 w-[260px] max-md:w-[200px] h-[60px] max-xl:w-[220px] bg-[#00A8FF] text-2xl max-md:text-lg max-xl:text-lg text-white font-light opacity-80 max-md:opacity-80 hover:opacity-100"
+              >
                 Résumé
-              </button>
-            </section>
+              </motion.button>
+            </motion.section>
           </section>
           <section className="home-right w-1/2 max-md:w-full max-md:h-1/2 h-full flex flex-col justify-center items-center relative">
             <img
