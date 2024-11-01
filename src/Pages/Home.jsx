@@ -22,8 +22,8 @@ const Home = () => {
                 Mastering new languages, exploring technologies, or building
                 projects -I make every second count
               </p>
-              <button className="mt-8 max-md:mt-0 w-[260px] max-md:w-[200px] h-[60px] max-xl:w-[220px] bg-[#00A8FF] text-2xl max-md:text-lg max-xl:text-lg text-white font-light opacity-50 max-md:opacity-80 hover:opacity-100">
-                Straight to the Résumé
+              <button className="mt-8 max-md:mt-0 w-[260px] max-md:w-[200px] h-[60px] max-xl:w-[220px] bg-[#00A8FF] text-2xl max-md:text-lg max-xl:text-lg text-white font-light opacity-80 max-md:opacity-80 hover:opacity-100">
+                Résumé
               </button>
             </section>
           </section>
@@ -33,7 +33,7 @@ const Home = () => {
               alt="character sitting with laptop"
               className="w-[600px] max-lg:hidden max-xl:w-[400px]"
             />
-            <button className="opacity-50 hover:opacity-100 absolute right-16 bottom-16 max-lg:right-8 max-md:text-sm tracking-widest max-lg:w-[200px]  flex flex-col justify-center items-center">
+            <button className="max-xl:hidden opacity-50 hover:opacity-100 absolute right-16 bottom-16 max-lg:right-8 max-md:text-sm tracking-widest max-lg:w-[200px]  flex flex-col justify-center items-center">
               <img
                 src={arrow}
                 alt="arrow down"
