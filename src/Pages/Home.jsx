@@ -2,8 +2,14 @@ import charSitting from "../Assets/char-sitting.png";
 import arrow from "../Assets/arrow.png";
 
 const Home = () => {
+  const ScrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
-    <section className="w-full h-screen flex flex-col bg-[#ebebeb]">
+    <section id="home" className="w-full h-screen flex flex-col bg-[#ebebeb]">
       <section className="w-full h-full flex flex-col bg-dotGrid bg-cover">
         <section className="w-full h-full flex max-md:flex-col">
           <section className="home-left h-full w-1/2 max-md:h-1/2 flex flex-col justify-start items-center max-xl:w-full max-md:items-start ">
@@ -33,7 +39,10 @@ const Home = () => {
               alt="character sitting with laptop"
               className="w-[600px] max-lg:hidden max-xl:w-[400px]"
             />
-            <button className="max-xl:hidden opacity-50 hover:opacity-100 absolute right-16 bottom-16 max-lg:right-8 max-md:text-sm tracking-widest max-lg:w-[200px]  flex flex-col justify-center items-center">
+            <button
+              onClick={() => ScrollToSection("aboutMe")}
+              className="max-xl:hidden opacity-50 hover:opacity-100 absolute right-16 bottom-16 max-lg:right-8 max-md:text-sm tracking-widest max-lg:w-[200px]  flex flex-col justify-center items-center"
+            >
               <img
                 src={arrow}
                 alt="arrow down"

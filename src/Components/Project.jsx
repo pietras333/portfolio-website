@@ -20,17 +20,19 @@ const iconMap = {
   react: ReactIcon,
 };
 
-const Project = ({ technologiesIcons, name }) => {
+const Project = ({ technologiesIcons, name, url }) => {
   const GetAccordingIcon = (iconName) =>
     iconMap[iconName.toLowerCase()] || DotIcon;
 
   return (
     <li className="flex items-center mt-4 max-xl:p-2">
-      <img
-        src={LinkIcon}
-        alt="Link icon"
-        className="w-[30px] h-[30px] max-xl:w-[20px] max-xl:h-[20px] opacity-75 hover:cursor-pointer hover:opacity-100"
-      />
+      <a href={url} target="_blank" rel="noreferrer">
+        <img
+          src={LinkIcon}
+          alt="Link icon"
+          className="w-[30px] h-[30px] max-xl:w-[20px] max-xl:h-[20px] opacity-75 hover:cursor-pointer hover:opacity-100"
+        />
+      </a>
       <img
         src={DotIcon}
         alt="Dot icon"

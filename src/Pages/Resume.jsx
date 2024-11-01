@@ -2,10 +2,15 @@ import CiscoLogo from "../Assets/Icons/cisco-logo.png";
 import CodeLogo from "../Assets/Icons/code-logo.png";
 import CodecademyLogo from "../Assets/Icons/codecademy-logo.png";
 import ZSTLogo from "../Assets/Icons/zst-logo.png";
-import DownloadIcon from "../Assets/Icons/download.png";
 import Arrow from "../Assets/arrow.png";
 
 const Resume = () => {
+  const ScrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section
       id="resume"
@@ -316,7 +321,10 @@ const Resume = () => {
           </ol>
         </section>
       </section>
-      <button className=" max-xl:hidden opacity-50 hover:opacity-100 absolute left-16 bottom-16 max-lg:right-8 max-md:text-sm tracking-widest max-lg:w-[200px] flex flex-col justify-center items-center">
+      <button
+        onClick={() => ScrollToSection("portfolio")}
+        className=" max-xl:hidden opacity-50 hover:opacity-100 absolute left-16 bottom-16 max-lg:right-8 max-md:text-sm tracking-widest max-lg:w-[200px] flex flex-col justify-center items-center"
+      >
         <img
           src={Arrow}
           alt="arrow down"
