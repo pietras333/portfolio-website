@@ -13,6 +13,7 @@ const Navbar = () => {
   const [visiblePage, setVisiblePage] = useState("home");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const CopyMailToClipboard = () => {
     // Check if user allows clipboard access
@@ -28,6 +29,7 @@ const Navbar = () => {
   };
 
   const ScrollToSection = (id) => {
+    setIsHamburgerMenuOpen(false);
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -35,6 +37,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
 
@@ -56,13 +61,16 @@ const Navbar = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsNavbarVisible(!entry.isIntersecting); // Hide navbar when Resume is in view
+          console.log(entry.target.id + ": " + " entry.target.id");
+
+          setIsNavbarVisible(!entry.isIntersecting);
+
           if (entry.isIntersecting) {
             setVisiblePage(entry.target.id);
           }
         });
       },
-      { threshold: 0.5 } // Adjust threshold as needed (0.5 = 50% visibility)
+      { threshold: 0.01 } // Adjust threshold as needed (0.5 = 50% visibility)
     );
 
     if (resumeSection) observer.observe(resumeSection);
@@ -73,6 +81,9 @@ const Navbar = () => {
     // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
+    // Add resize event listener
+    window.addEventListener("resize", handleResize);
+
     // Cleanup the event listener when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -80,6 +91,7 @@ const Navbar = () => {
       if (portfolioSection) observer.unobserve(portfolioSection);
       if (aboutMeSection) observer.unobserve(aboutMeSection);
       if (contactSection) observer.unobserve(contactSection);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -281,7 +293,7 @@ const Navbar = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true, amount: 0.5 }}
-                onClick={() => ScrollToSection("aboutMe")}
+                onClick={() => ScrollToSection("resume")}
               >
                 Résumé
               </motion.li>
@@ -291,19 +303,26 @@ const Navbar = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true, amount: 0.5 }}
-                onClick={() => ScrollToSection("aboutMe")}
+                onClick={() => ScrollToSection("portfolio")}
               >
                 Portfolio
               </motion.li>
               <motion.li
-                className="w-1/3 h-fit text-center"
+                className="w-1/3 h-fit text-center relative"
                 initial={{ opacity: 0, y: -200 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true, amount: 0.5 }}
-                onClick={() => ScrollToSection("aboutMe")}
+                onClick={() => CopyMailToClipboard()}
               >
                 Contact
+                <section
+                  className={`${
+                    isModalVisible ? "opacity-100" : "opacity-0"
+                  } absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-[#ebebeb] text-[#FF006F]`}
+                >
+                  Thanks!
+                </section>
               </motion.li>
               <section className="w-full flex self-flex h-fit justify-around items-center mb-[25%]">
                 <motion.li

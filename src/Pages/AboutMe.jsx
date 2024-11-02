@@ -13,7 +13,7 @@ const AboutMe = () => {
       id="aboutMe"
       className="w-full h-screen flex flex-col bg-[#ebebeb] relative"
     >
-      <section className="w-full h-fit flex  max-xl:flex-col-reverse">
+      <section className="w-full h-full flex  max-xl:flex-col-reverse">
         <section className="home-left h-fit w-1/2 max-md:h-3/4 flex flex-col justify-start items-start pl-32 max-md:pl-0 max-xl:w-full max-md:items-center max-md:justify-start ">
           <img
             src={charUpStairs}
@@ -36,7 +36,7 @@ const AboutMe = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.5 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="text-xl max-xl:text-right max-lg:text-left mt-8 max-md:mt-0 opacity-100 w-[600px] h-[60px] max-md:text-sm max-md:h-fit max-xl:text-lg max-md:w-4/5"
+            className="text-xl h-fit max-xl:text-right max-lg:text-left mt-8 max-md:mt-0 opacity-100 w-[600px] max-md:text-sm max-md:h-fit max-xl:text-lg max-md:w-4/5"
           >
             I'm Piotr Wendt, an 18-year-old developer from Poland with a
             lifelong passion for computers. I began my journey at age 12,
