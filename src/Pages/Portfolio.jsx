@@ -17,7 +17,7 @@ const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className="w-full h-screen max-xl:h-screen flex flex-col max-xl:flex-col relative"
+      className="w-full h-screen max-xl:h-fit flex flex-col max-xl:flex-col relative"
     >
       <section className="w-full h-2/3 max-xl:h-fit max-xl:flex max-xl:flex-col max-xl:items-center">
         <h2 className="text-3xl max-xl:p-4 mt-[2%] pl-[15%] font-light max-xl:w-full max-xl:mt-[2%] max-xl:text-left">
